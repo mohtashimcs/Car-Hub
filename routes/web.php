@@ -96,13 +96,15 @@ Route::get('Test/addregion',[region_controller::class,'create']);
 Route::post('Test/store', [region_controller::class, 'store']) ->name('region');
 Route::get('crud/create', [crud::class, 'create']);
 Route::post('crud/store', [crud::class, 'store']) ->name('m-store');
-Route::get('crud/edit', [crud::class, 'edit']);
-Route::post('crud/update', [crud::class, 'update'])->name('m-edit');
+Route::get('crud/edit{id}', [crud::class, 'edit'])->name('many-edit');
+Route::post('crud/update{id}', [crud::class, 'update'])->name('m-edit');
+Route::post('crud/destroy/{id}', [crud::class, 'destroy'])->name('many-destroy');
 #Route::post('Test/store', [city_controller::class, 'store']) ->name('city-store');
+Route::get('crud/index', [crud::class, 'index']);
 
-Route::get('/send_mail',function(){
-    Mail::to('maazrehan@ciitwah.edu.pk')->send(new form_mail());
-});
+#Route::get('/send_mail',function(){
+ #   Mail::to('maazrehan@ciitwah.edu.pk')->send(new form_mail());
+#});
 
 Route::get('/mail_form', [mailController::class, 'open_form' ])->name('mail_form');
 

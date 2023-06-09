@@ -59,30 +59,18 @@
                             </div>
                         </h5>
                         <div class="card-body">
-                            <form action="{{ route('m-edit') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('m-edit',['id' => $many->car_id]) }}" method="post">
                                 @csrf
                                 <div class="row">
-                                <div class="col-md-4 col-sm-12 mb-3">
-                                        <label class="form-label" for="basic-default-name">Choose a Car:</label>
-                                        <select class="form-control @error('color') is-invalid @enderror" name="name"
-                                            id="name"  value="{{old('car')}}">
-                                            @foreach($cars as $car)
-                                            <option value="{{$car->id}}">{{$car->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('color')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                <input type="hidden" name="id" value="{{ $many->car_id }}">
+
 
                                     <div class="col-md-4 col-sm-12 mb-3">
-                                        <label class="form-label" for="basic-default-name">Choose a Region:</label>
-                                        <select class="form-control @error('color') is-invalid @enderror" name="region"
-                                            id="region"  value="{{old('region')}}">
-                                            @foreach($regions as $region)
-                                            <option value="{{$region->id}}">{{$region->name}}</option>
+                                        <label class="form-label" for="basic-default-name">Choose a User:</label>
+                                        <select class="form-control @error('color') is-invalid @enderror" name="user"
+                                            id="user"  value="{{old('user')}}">
+                                            @foreach($User as $user)
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
                                             @endforeach
                                         </select>
                                         @error('color')
@@ -93,7 +81,7 @@
                                     </div>
                                     <div class="col-md-12 col-sm-12 mb-3 text-center">
                                         <button type="submit" class="btn btn-info">
-                                            <span class="tf-icons bx bxs-save"></span> &nbsp; Store
+                                            <span class="tf-icons bx bxs-save"></span> &nbsp; Update
                                         </button>
                                     </div>
                                 </div>

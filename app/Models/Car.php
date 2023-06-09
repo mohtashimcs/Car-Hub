@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Car extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $table='cars';
     protected $fillable = [
         'name',
         'type',
